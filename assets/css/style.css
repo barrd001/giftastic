@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+#masthead {
+    margin: 0 auto;
+    text-align: center;
+    background: black;
+    color: white;
+}
+
+form {
+    float: right;
+    margin: 0 auto;
+}
+
+button {
+    margin-right: 10px;
+}
