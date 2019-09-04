@@ -9,11 +9,11 @@ function renderButtons() {
         // create class ID for play/pause click event
         class: 'gif-button',
         'data-name': videoGames[i],
-        // initial data state for play/pause click event
-        'data-state': 'still',
-        // define still and animated url's for play/pause click event
-        // 'data-still': 
-        // 'data-animate': 
+        // // initial data state for play/pause click event
+        // 'data-state': 'still',
+        // // define still and animated url's for play/pause click event
+        // // 'data-still': 
+        // // 'data-animate': 
     });
     $('#button-view').append(gameButton);
 };
@@ -35,10 +35,9 @@ $('#button-view').on('click', '.gif-button', function() {
     
     // var key = 'QJwZn4MuWdgdO9uOc1Sey3flUREZtjYx';
     var gameGif = $(this).attr('data-name');
-    var queryURL = "https://api.giphy.com/v1/gifs/random?=" +
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         gameGif + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
     console.log(gameGif);
-    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: 'GET'
@@ -58,14 +57,36 @@ $('#button-view').on('click', '.gif-button', function() {
 
             var renderGif = $('<img>');
             renderGif.attr('src', results[j].images.original_still.url);
-            renderGif.attr('')
+            renderGif.attr('data-state', 'still');
+            renderGif.attr('data-still', results[j].images.original_still.url);
+            renderGif.attr('data-animate', results[j].images.original.url);
 
             gifDiv.append(p);
             gifDiv.append(renderGif);
 
             $('#gif-view').prepend(gifDiv);
+
+            
         ;}
     });
 });
+
+$("#gif-view").on('click', '.gif', function() {
+    var state = $(this).attr('data-state');
+    console.log(state);
+
+    if(state=== 'still'){
+        var url = $(this).attr('data-animate')
+        $(this).attr('src', url);
+        $(this).attr('data-state', 'animate')
+        console.log(this);
+    }   else if(state=== 'animate'){
+        var url = $(this).attr('data-still')
+        $(this).attr('src', url)
+        $(this).attr('data-state', 'still')
+        console.log(this);
+    } 
+});
+
 renderButtons();
 console.log(videoGames);
