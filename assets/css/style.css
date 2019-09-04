@@ -11,8 +11,14 @@
 form {
     float: right;
     margin: 0 auto;
+    border: 15px solid black;
 }
 
 button {
     margin-right: 10px;
+}
+
+.gif {
+    float: left;
+    margin-right: 15px;
 }
