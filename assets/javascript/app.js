@@ -6,7 +6,6 @@ function renderButtons() {
         var gameButton = $('<button>', {
         text: videoGames[i],
         id: videoGames[i],
-        // create class ID for play/pause click event
         class: 'gif-button',
         'data-name': videoGames[i],
         // // initial data state for play/pause click event
@@ -48,7 +47,7 @@ $('#button-view').on('click', '.gif-button', function() {
         console.log(response);
         for(var j = 0; j <  results.length; j++) {
             var gifDiv = $('<div>');
-
+            // create class ID for play/pause click event
             gifDiv.addClass('gif');
 
             var rating = results[j].rating;
@@ -57,8 +56,11 @@ $('#button-view').on('click', '.gif-button', function() {
 
             var renderGif = $('<img>');
             renderGif.attr('src', results[j].images.original_still.url);
+            // Data State for play/pause click event
             renderGif.attr('data-state', 'still');
+            // Still image URL for play/pause click event
             renderGif.attr('data-still', results[j].images.original_still.url);
+            // Animated image URL for play/pause click event
             renderGif.attr('data-animate', results[j].images.original.url);
 
             gifDiv.append(p);
@@ -72,6 +74,7 @@ $('#button-view').on('click', '.gif-button', function() {
 });
 
 $("#gif-view").on('click', '.gif', function() {
+    
     var state = $(this).attr('data-state');
     console.log(state);
 
@@ -80,7 +83,9 @@ $("#gif-view").on('click', '.gif', function() {
         $(this).attr('src', url);
         $(this).attr('data-state', 'animate')
         console.log(this);
-    }   else if(state=== 'animate'){
+    }   
+    
+    if(state=== 'animate'){
         var url = $(this).attr('data-still')
         $(this).attr('src', url)
         $(this).attr('data-state', 'still')
