@@ -8,11 +8,7 @@ function renderButtons() {
         id: videoGames[i],
         class: 'gif-button',
         'data-name': videoGames[i],
-        // // initial data state for play/pause click event
-        // 'data-state': 'still',
-        // // define still and animated url's for play/pause click event
-        // // 'data-still': 
-        // // 'data-animate': 
+       
     });
     $('#button-view').append(gameButton);
 };
