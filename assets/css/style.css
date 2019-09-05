@@ -1,24 +1,53 @@
 * {
     box-sizing: border-box;
 }
+
+body {
+    background-image: url("../images/gamebackground.jpg");
+    background-size: cover;
+}
 #masthead {
     margin: 0 auto;
     text-align: center;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
+    height: 100px;
+    width: 700px;
+    border-radius: 25px;
+    margin-bottom: 15px;
 }
 
+p, h3 {
+    color: black;
+    text-align: center;
+}
 form {
     float: right;
     margin: 0 auto;
     border: 15px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
 }
 
-button {
+button, #add-gif {
     margin-right: 10px;
+    border-radius: 25px;
+    color: white;
+    background: black;
+    height: 30px;
+}
+
+.info {
+    background: white;
+    border-radius:10px;
 }
 
 .gif {
     float: left;
     margin-right: 15px;
+}
+
+img {
+    border-radius: 50px;
 }

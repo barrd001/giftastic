@@ -1,4 +1,4 @@
-var videoGames = ["devil may cry", "final fantasy", "lego"];
+var videoGames = ["Devil May Cry", "Final Fantasy", "Lego"];
 
 function renderButtons() {
     $('#button-view').empty();
@@ -32,10 +32,10 @@ $('#add-gif').on('click', function(event) {
 
 $('#button-view').on('click', '.gif-button', function() {
     
-    // var key = 'QJwZn4MuWdgdO9uOc1Sey3flUREZtjYx';
+    var key = 'QJwZn4MuWdgdO9uOc1Sey3flUREZtjYx';
     var gameGif = $(this).attr('data-name');
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        gameGif + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        gameGif + "&api_key=" + key +"&limit=10";
     console.log(gameGif);
     $.ajax({
         url: queryURL,
@@ -49,11 +49,14 @@ $('#button-view').on('click', '.gif-button', function() {
             var gifDiv = $('<div>');
             // create class ID for play/pause click event
             gifDiv.addClass('gif');
-
+            console.log(response);
             var rating = results[j].rating;
+            var title = results[j].title
 
+            infoDiv = $('<div>');
+            infoDiv.addClass('info');
             var p = $('<p>').text('Rating: ' +  rating);
-
+            var t = $('<h3>').text(title);
             var renderGif = $('<img>');
             renderGif.attr('src', results[j].images.original_still.url);
             // Data State for play/pause click event
@@ -63,8 +66,9 @@ $('#button-view').on('click', '.gif-button', function() {
             // Animated image URL for play/pause click event
             renderGif.attr('data-animate', results[j].images.original.url);
 
-            gifDiv.append(p);
-            gifDiv.append(renderGif);
+            infoDiv.append(t, p);
+            gifDiv.append(infoDiv);
+            gifDiv.prepend(renderGif);
 
             $('#gif-view').prepend(gifDiv);
 
