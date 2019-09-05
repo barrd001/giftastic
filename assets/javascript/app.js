@@ -73,10 +73,10 @@ $('#button-view').on('click', '.gif-button', function() {
     });
 });
 
-$("#gif-view").on('click', '.gif', function() {
+$("#gif-view").on('click', 'img', function() {
     
     var state = $(this).attr('data-state');
-    console.log(state);
+    console.log($(this));
 
     if(state=== 'still'){
         var url = $(this).attr('data-animate')
